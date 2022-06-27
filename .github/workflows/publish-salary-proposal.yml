@@ -1,0 +1,16 @@
+name: Publish Salary proposal to Safe
+on:
+  schedule:
+    # Runs every 25th of the month
+    - cron:  '0 0 25 * *'
+jobs:
+  submit-gnosis-safe:
+    runs-on: ubuntu-latest
+    env:
+      ETH_RPC: ${{secrets.ETH_RPC}}
+      SAFE_DELEGATE_PRIVATE_KEY: ${{secrets.SAFE_DELEGATE_PRIVATE_KEY}}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm install
+      - run: npm run publish-salaries
