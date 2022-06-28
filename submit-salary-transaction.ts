@@ -66,9 +66,13 @@ const main = async () => {
 
   let salariesCalldata = salariesCsv
     .slice(1)
-    .map((l) => erc20Iface.encodeFunctionData("transfer", [l[2], String((Number(l[3]) / tornPrice) * 1e18)]));
+    .map((l) =>
+      erc20Iface.encodeFunctionData("transfer", [
+        l[2],
+        ((Number(l[3]) / tornPrice) * 1e18).toLocaleString("fullwide", { useGrouping: false }),
+      ])
+    );
 
-  console.log(salariesCalldata);
   salariesCalldata = salariesCalldata.map((calldata) =>
     ethers.utils.solidityPack(
       ["uint8", "address", "uint256", "uint256", "bytes"],
