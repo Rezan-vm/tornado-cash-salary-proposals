@@ -1,8 +1,9 @@
 name: Publish Salary proposal to Safe
 on:
+  workflow_dispatch:
   schedule:
-    # Runs every 25th of the month
-    - cron:  '0 0 25 * *'
+    # Runs every 28th of the month
+    - cron:  '0 0 28 * *'
 jobs:
   submit-gnosis-safe:
     runs-on: ubuntu-latest
