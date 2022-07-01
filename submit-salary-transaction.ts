@@ -118,7 +118,7 @@ const main = async () => {
     proposalData.to,
     0,
     proposalData.data,
-    0,
+    1, // Delegatecall
     safeTxGas,
     0,
     0,
@@ -134,7 +134,7 @@ const main = async () => {
     to: proposalData.to,
     value: 0,
     data: proposalData.data,
-    operation: 0,
+    operation: 1, // Delegatecall 
     gasToken: null,
     safeTxGas: safeTxGas,
     baseGas: 0,
